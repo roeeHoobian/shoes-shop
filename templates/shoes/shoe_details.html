@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Shoe List
+{% endblock %}
+
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'shoes/shoe-details.css' %}">
+<div class="details-and-review-container">
+    <div class="shoe-list">
+    <div class="shoe-item">
+      <h4>{{ shoe.name }}</h4>
+      <p><strong>Brand:</strong> {{ shoe.brand }}</p>
+      <p><strong>Category:</strong> {{ shoe.category }}</p>
+      <p><strong>Description:</strong> {{ shoe.description }}</p>
+      <p><strong>Price:</strong> ${{ shoe.price }}</p>
+      <p><strong>Stock:</strong> {{ shoe.stock_quantity }} available</p>
+      <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}">
+    </div>
+  </div>
+
+<div class="reviews-container">
+    <h4>Reviews</h4>
+    <div class="reviews">
+        {% for review in reviews %}
+            <div class="review">
+                <div class="review-header">
+                    <strong class="review-username">{{ review.user.username }}</strong>
+                    <span class="review-rating">{{ review.rating }}/5</span>
+                </div>
+                <p class="review-comment">{{ review.comment }}</p>
+                <small class="review-date">{{ review.created_at }}</small>
+            </div>
+        {% empty %}
+            <p class="no-reviews">No reviews yet. Be the first to review!</p>
+        {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+        <div class="review-form">
+            <h4>Leave a Review</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="submit-btn">Submit Review</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="login-prompt">You must <a class="login-cta" href="{% url 'user_login' %}">log in</a> to leave a review.</p>
+    {% endif %}
+</div>
+</div>
+
+
+
+{% endblock %}

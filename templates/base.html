@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <title>{% block title %}Shoes shop{% endblock %}</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/">
+        <img src="{% static 'images/logo.png' %}" alt="Future Shoes Logo">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/shoes/all">Our Shoes</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+    <div class="auth-container">
+      {% if user.is_authenticated %}
+      <span>Welcome, {{ user.username }}!</span>
+      <a href="{% url 'user_logout' %}">Logout</a>
+      {% else %}
+      <a href="{% url 'user_signup' %}">Signup</a>
+      <a href="{% url 'user_login' %}">Login</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <main>
+    {% block content %}
+    <p>Default content goes here.</p>
+    {% endblock %}
+  </main>
+</body>
+
+</html>

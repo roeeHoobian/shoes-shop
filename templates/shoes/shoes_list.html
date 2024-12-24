@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Shoe List
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'shoes/shoes-list.css' %}">
+
+  <div class="shoe-list">
+    {% for shoe in shoes %}
+    <a class="shoe-item" href="{% url 'shoe_details' shoe.id %}">
+      <h4>{{ shoe.name }}</h4>
+      <p><strong>Brand:</strong> {{ shoe.brand }}</p>
+      <p><strong>Price:</strong> ${{ shoe.price }}</p>
+      <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" style="max-width: 200px;">
+    </a>
+    {% empty %}
+    <p>No shoes available.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  place-items: center;
+  min-height: 100vh;
+}
+
+p {
+  font-size: 16px;
+}
+
+strong {
+  color: black;
+}
+
+.shoe-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.shoe-item {
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: -5px 5px 16px #dedede;
+  cursor: pointer;
+
+}
+
+.shoe-item:hover {
+  transform: scale(1.02);
+}
+
+img {
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

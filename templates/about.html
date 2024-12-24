@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About Us
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'about.css' %}">
+
+<div class="about-container">
+    <div class="about-content">
+        <h1>About Us</h1>
+        <p>
+            Welcome to the Futuristic Shoes Shop, where innovation meets style! Our mission is to bring you the latest in cutting-edge footwear technology, combining comfort, performance, and design to create shoes that truly stand out.
+        </p>
+        <p>
+            Founded with a passion for redefining the shoe industry, we offer a wide range of categories, from high-performance sports shoes to sleek formal designs. Each pair is crafted with precision, ensuring quality and durability that exceed your expectations.
+        </p>
+        <p>
+            Step into the future with us and discover shoes that adapt to your lifestyle. Whether you're an athlete, a trendsetter, or someone looking for the perfect pair, we've got you covered.
+        </p>
+    </div>
+    <div class="about-image">
+        <img src="{% static 'images/about.png' %}" alt="Futuristic Shoes" />
+    </div>
+</div>
+{% endblock %}

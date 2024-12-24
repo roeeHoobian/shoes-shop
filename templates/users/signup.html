@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/signup.css' %}">
+
+    <form class="signup-form" method="POST">
+        <p>Signup</p>
+
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit">Signup</button>
+    </form>
+{% endblock %}
